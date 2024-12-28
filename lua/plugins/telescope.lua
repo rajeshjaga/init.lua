@@ -60,5 +60,6 @@ return {
                 require('telescope.builtin').find_files(opts)
             end,
             { desc = "Find Files in code folder" })
+        require "config.telescope.multigrep".setup()
     end
 }
