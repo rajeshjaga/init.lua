@@ -18,4 +18,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 vim.keymap.set('n', '<leader>w', ":windo set nowrap<CR>", { desc = 'Disable [W]rap in during multiple windows' })
 
-vim.keymap.set('n', "<leader>x", "<cmd>source %<CR>")
+vim.keymap.set('n', "<leader>x", function()
+    local config = vim.fn.stdpath('config')
+    vim.cmd("source " + config)
+end)
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>")
