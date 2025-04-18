@@ -1,4 +1,5 @@
 return {
+    { 'echasnovski/mini.nvim',   version = "*" },
     { "akinsho/bufferline.nvim", opts = { options = { separator_style = "slope" } } },
     {
         "rose-pine/neovim",

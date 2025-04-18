@@ -8,6 +8,10 @@ return {
         "nvim-treesitter/nvim-treesitter",
     },
     config = function()
+        require("notify").setup({
+            background_colour="#000000",
+            render = "compact"
+        })
         require("noice").setup({
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
