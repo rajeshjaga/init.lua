@@ -1,3 +1,4 @@
 {
-    "runtime.unicodeName": true
+    "runtime.unicodeName": true,
+    "completion.autoRequire": false
 }

@@ -13,7 +13,7 @@ return {
                     transparency = true
                 }
             })
-            vim.cmd("colorscheme rose-pine")
+            --            vim.cmd("colorscheme rose-pine")
         end
     },
     {
@@ -40,7 +40,7 @@ return {
             require("lualine").setup {
                 options = {
                     --- @usage 'rose-pine'
-                    theme = 'rose-pine',
+                    theme = 'tokyonight',
                     icons_enabled = true,
                     component_separators = { left = '󰿟', right = '' },
                     section_separators = { left = '', right = '' },
@@ -48,29 +48,52 @@ return {
             }
         end
     },
-    "folke/twilight.nvim",
     {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
+        "folke/twilight.nvim",
         opts = {
-            window = { backdrop = 0.7 },
-            plugins = {
-                gitsigns = true,
-                tmux = true,
-                kitty = { enabled = false, font = "+2" },
-            }
+            dimming = {
+                alpha = 0.25,        -- amount of dimming
+                color = { "Normal", "#ffffff" },
+                term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
+                inactive = false,    -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+            },
+            context = 10,            -- amount of lines we will try to show around the current line
+            treesitter = true,       -- use treesitter when available for the filetype
+            expand = {
+                "function",
+                "method",
+                "table",
+                "if_statement",
+            },
+            exclude = {}, -- exclude these filetypes
         },
-        keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+        config = function()
+            require 'twilight'.setup {
+                vim.keymap.set('n', '<leader>t', ':Twilight<CR>', {})
+            }
+        end,
     },
     {
         "tiagovla/scope.nvim",
         config = function()
-            require("scope").setup({})
-            vim.opt.sessionoptions = { -- required
-                "buffers",
-                "tabpages",
-                "globals",
+            vim.opt.sessionoptions = {
+                'buffers',
+                'tabpages',
+                'globals',
             }
+            require('scope').setup({})
+        end
+    },
+    {
+        "folke/tokyonight.nvim",
+        priority = 1000,
+        config = function()
+            require 'tokyonight'.setup {
+                styles = {
+                    comments = { italic = false },
+                },
+            }
+            vim.cmd.colorscheme 'tokyonight-night'
         end
     },
     {
