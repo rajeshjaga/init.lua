@@ -13,7 +13,7 @@ return {
                     transparency = true
                 }
             })
-            --            vim.cmd("colorscheme rose-pine")
+            vim.cmd("colorscheme rose-pine")
         end
     },
     {
@@ -93,7 +93,7 @@ return {
                     comments = { italic = false },
                 },
             }
-            vim.cmd.colorscheme 'tokyonight-night'
+            -- vim.cmd.colorscheme 'tokyonight-night'
         end
     },
     {
