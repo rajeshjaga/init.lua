@@ -1,0 +1,31 @@
+vim.o.number=true
+vim.o.relativenumber=true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.opt.mouse = "a"
+vim.opt.expandtab = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = true
+vim.g.mapleader = " "
+vim.opt.breakindent = true
+vim.opt.showmode = false
+vim.opt.ignorecase = true
+vim.opt.updatetime = 250
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.smartcase = true
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.inccommand = 'split'
+vim.opt.cursorline = true
+vim.opt.scrolloff = 10
+vim.opt.hlsearch = true
+vim.opt.termguicolors = true
+--ufo related
+vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldinner: ,foldclose:'
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
