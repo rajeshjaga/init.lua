@@ -4,7 +4,7 @@ return {
     lazy = false,
     opts = {
         bigfile = { enabled = true },
-        dashboard = { 
+        dashboard = {
             preset = {
                 pick = nil,
                 ---@type snacks.dashboard.Item[]
@@ -19,15 +19,8 @@ return {
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 },
                 -- Used by the `header` section
-                header = [[
-                _   _                 _           
-                | \ | |               (_)          
-                |  \| | ___  _____   ___ _ __ ___  
-                | . ` |/ _ \/ _ \ \ / / | '_ ` _ \ 
-                | |\  |  __/ (_) \ V /| | | | | | |
-                \_| \_/\___|\___/ \_/ |_|_| |_| |_|
-
-                ]],
+                header =
+                [[ Rajesh ]],
             },
             -- item field formatters
             formats = {
@@ -56,7 +49,7 @@ return {
             },
             sections = {
                 { section = "header" },
-                { section = "keys", gap = 1, padding = 1 },
+                { section = "keys",   gap = 1, padding = 1 },
                 { section = "startup" },
             },
         },
@@ -64,14 +57,14 @@ return {
         indent = { enabled = true },
         input = { enabled = true },
         lazygit = { enabled = true },
-        picker = { enabled = true },
-        notifier = { enabled = true, timeout=3000 },
+        picker = { enabled = false },
+        notifier = { enabled = true, timeout = 3000 },
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
-        zen = {  
+        zen = {
             toggles = {
                 dim = true,
                 git_signs = false,
@@ -79,7 +72,7 @@ return {
                 -- diagnostics = false,
                 -- inlay_hints = false,
             },
-            center = true, -- center the window
+            center = true,          -- center the window
             show = {
                 statusline = false, -- can only be shown when using the global statusline
                 tabline = false,
@@ -105,32 +98,32 @@ return {
             },
         },
     },
-    keys={
-        { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-        { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-        { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-        { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-        { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-        { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-        { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-        { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
-        { "<leader>nv", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File"},
+    keys = {
+        { "<leader>,",  function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+        { "<leader>/",  function() Snacks.picker.grep() end,                                    desc = "Grep" },
+        { "<leader>:",  function() Snacks.picker.command_history() end,                         desc = "Command History" },
+        { "<leader>n",  function() Snacks.picker.notifications() end,                           desc = "Notification History" },
+        { "<leader>ff", function() Snacks.picker.files() end,                                   desc = "Find Files" },
+        { "<leader>fg", function() Snacks.picker.git_files() end,                               desc = "Find Git Files" },
+        { "<leader>fp", function() Snacks.picker.projects() end,                                desc = "Projects" },
+        { "<leader>fr", function() Snacks.picker.recent() end,                                  desc = "Recent" },
+        { "<leader>nv", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
         --lsp
-        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-        { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-        { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-        { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-        { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
-        { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
-        { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-        { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+        { "gd",         function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
+        { "gD",         function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
+        { "gr",         function() Snacks.picker.lsp_references() end,                          nowait = true,                  desc = "References" },
+        { "gI",         function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
+        { "gy",         function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
+        { "gai",        function() Snacks.picker.lsp_incoming_calls() end,                      desc = "C[a]lls Incoming" },
+        { "gao",        function() Snacks.picker.lsp_outgoing_calls() end,                      desc = "C[a]lls Outgoing" },
+        { "<leader>ss", function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
+        { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
         --other
-        { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-        { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
-        { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
-        { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-        { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-        { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+        { "<leader>z",  function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
+        { "<leader>Z",  function() Snacks.zen.zoom() end,                                       desc = "Toggle Zoom" },
+        { "<leader>n",  function() Snacks.notifier.show_history() end,                          desc = "Notification History" },
+        { "<leader>bd", function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
+        { "<leader>lg", function() Snacks.lazygit() end,                                        desc = "Lazygit" },
+        { "<c-/>",      function() Snacks.terminal() end,                                       desc = "Toggle Terminal" },
     }
 }
